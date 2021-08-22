@@ -23,56 +23,126 @@
         Contraseña
         Confirmar contraseña
         -->
-        
-       <div class="container">
-           <div class="blueBg">
-               <div class="box signin">
-                   <h2>¿Ya tienes una cuenta?</h2>
-                   <button class="signinBtn">Iniciar Sesion</button>
-               </div>
-               <div class="box signup">
-                   <h2>¿No tienes una cuenta?</h2>
-                   <button class="signupBtn">Registrarse</button>
-               </div>
-           </div>
-           <div class="formBx">
-               <!-- ////FORM DE INICIO DE SESION//// -->
-               <div class="form signinForm">
-                   <form>
-                       <h3>Iniciar Sesion</h3>
-                       <input type="text" placeholder="Usuario">
-                       <input type="password" placeholder="Contraseña">
-                       <input type="submit" value="Iniciar sesion">
-                   </form>
-               </div>
-               <!-- ////FORM DE REGISTRO//// -->
-               <div class="form signupForm">
-                   <form>
-                       <h3>Registrarse</h3>
-                       <input type="text" placeholder="Usuario">
-                       <input type="password" placeholder="Contraseña">
-                       <input type="password" placeholder="Confirmar contraseña">
-                       <input type="submit" value="Registrarse">
-                   </form>
-               </div>
-           </div>
+        <div class="container">
+           <form id="Form0">
+                <div class="btn-box">
+                    <button type="button" id="Inicio"> YA TENGO CUENTA </button>
+                    <button type="button" id="Crear"> QUIERO REGISTRARME </button>
+                </div>
+              
+           </form> 
+           <form id="Form1">
+                <h3>DATOS PERSONALES</h3>
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="date" placeholder="Fecha de nacimiento" required>
+            
+                <div class="btn-box">
+                    <button type="button" id="Ant0"> ANTERIOR </button>
+                    <button type="button" id="Sig1"> SIGUIENTE </button>
+                </div>
+           </form>  
+            
+           <form id="Form2">
+                <h3>CREAR CUENTA</h3>
+                <input type="text" placeholder="Correo" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirmar Password" required>
+            
+                <div class="btn-box">
+                    <button type="button" id="Ant1"> ANTERIOR </button>
+                    <button type="button" id="Sig2"> SIGUIENTE </button>
+                </div>
+          </form>  
+            
+          <form id="Form3">
+            <h3>DATOS DE LA CUENTA</h3>
+            <input type="image" placeholder="Imagen de perfil" required>
+            <input type="text" placeholder="Nombre de Usuario" required>
+            
+            <div class="btn-box">
+                <button type="button" id="Ant2"> ANTERIOR </button>
+                <button type="Submit" > CREAR CUENTA </button>
+            </div>
+          </form>  
+            
+           <form id="Form4">
+            <h3>INICIAR SESION</h3>
+            <input type="text" placeholder="Correo" required>
+            <input type="password" placeholder="Password" required>
+            
+            <div class="btn-box">
+                <button type="button" id="Ant3"> ANTERIOR </button>
+                <button type="Submit" > INICIAR </button>
+            </div>
+          </form>   
+            
+            <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col"><small>Paso 1</small></div>
+                <div class="step-col"><small>Paso 2</small></div>
+                <div class="step-col"><small>Paso 3</small></div>
+            </div>
         </div>
-        
+
         <script>
-            const signinBtn=document.querySelector('.signinBtn');
-            const signupBtn=document.querySelector('.signupBtn');
-            const formBx=document.querySelector('.formBx');
             const body=document.querySelector('body');
+
             
-            signupBtn.onclick=function(){
-                formBx.classList.add('active');
+            var Form1= document.getElementById("Form1");
+            var Form2= document.getElementById("Form2");
+            var Form3= document.getElementById("Form3");
+            
+            var Crear= document.getElementById("Crear");
+            var Sig1= document.getElementById("Sig1");
+            var Ant1= document.getElementById("Ant1");
+            var Sig2= document.getElementById("Sig2");
+            var Ant2= document.getElementById("Ant2");
+            
+            var progress= document.getElementById("progress");
+            
+            Crear.onclick = function(){
+                Form0.style.left = "-450px";
+                Form1.style.left = "40px";
+                body.classList.add('active2');
+  
+            }
+            Inicio.onclick = function(){
+                Form0.style.left = "450px";
+                Form4.style.left = "40px";
                 body.classList.add('active');
-            };
-            
-            signinBtn.onclick=function(){
-                formBx.classList.remove('active');
+            }
+             Ant0.onclick = function(){
+                Form0.style.left = "40px";
+                Form1.style.left = "450px";
+                body.classList.remove('active2');
+                
+            }
+            Sig1.onclick = function(){
+                Form1.style.left = "-450px";
+                Form2.style.left = "40px";
+                progress.style.width = "240px";
+            }
+            Ant1.onclick = function(){
+                Form1.style.left = "40px";
+                Form2.style.left = "450px";
+                progress.style.width = "120px";
+            }
+            Sig2.onclick = function(){
+                Form2.style.left = "-450px";
+                Form3.style.left = "40px";
+                progress.style.width = "360px";
+            }
+            Ant2.onclick = function(){
+                Form2.style.left = "40px";
+                Form3.style.left = "450px";
+                progress.style.width = "240px";
+            }
+             Ant3.onclick = function(){
+                Form0.style.left = "40px";
+                Form4.style.left = "-450px";
                 body.classList.remove('active');
-            };
-        </script>
+            }
+            
+        </script>   
     </body>
 </html>
