@@ -6,6 +6,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="css/style-registro.css"/>
+        <style>
+            img{
+                position: absolute;
+                top: 30px;
+                left: 40px;
+                transition: 0.5s;
+            }
+            #Form0{
+                top: 300px;
+            }
+            body.active img{
+                left: 450px;
+                transition: 0.5s;
+            }
+            body.active2 img{
+                left: -450px;
+                transition: 0.5s;
+            }
+        </style>
     </head>
     <body>
         <!-- Inicio de sesion
@@ -24,6 +43,7 @@
         Confirmar contraseña
         -->
         <div class="container">
+           <img src="logo.png" height="280" width="280"/>
            <form id="Form0">
                 <div class="btn-box">
                     <button type="button" id="Inicio"> YA TENGO CUENTA </button>
