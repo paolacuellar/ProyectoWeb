@@ -53,24 +53,28 @@
            </form> 
            <form id="Form1">
                 <h3>DATOS PERSONALES</h3>
-                <input type="text" placeholder="Nombre completo" required>
-                <input type="date" placeholder="Fecha de nacimiento" required>
-            
+                <input type="text" placeholder="Nombre completo" required pattern="[A-Za-z]+">
+                
+                <input type="date" class="Fecha" placeholder="Fecha de nacimiento" required>
+                <span></span>
                 <div class="btn-box">
                     <button type="button" id="Ant0"> ANTERIOR </button>
-                    <button type="button" id="Sig1"> SIGUIENTE </button>
+                    <button type="submit" id="Sig1"> SIGUIENTE </button>
                 </div>
            </form>  
             
            <form id="Form2">
                 <h3>CREAR CUENTA</h3>
-                <input type="text" placeholder="Correo" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirmar Password" required>
+                <input type="text" id= "email" placeholder="Correo" required onkeydown="vEmail()">
+                <span id="txEmail"></span>
+                <input type="password" id= "pass" placeholder="Password" required onkeydown="vPass()">
+                <span id="txPass"></span>
+                <input type="password" id="confirmpass" placeholder="Confirmar Password" required onkeydown="vconfirmPass()">
+
             
                 <div class="btn-box">
                     <button type="button" id="Ant1"> ANTERIOR </button>
-                    <button type="button" id="Sig2"> SIGUIENTE </button>
+                    <button type="submit" id="Sig2"> SIGUIENTE </button>
                 </div>
           </form>  
             
@@ -104,6 +108,8 @@
             </div>
         </div>
 
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/validation.js"></script>
         <script>
             const body=document.querySelector('body');
 
@@ -119,6 +125,11 @@
             var Ant2= document.getElementById("Ant2");
             
             var progress= document.getElementById("progress");
+
+            fechaActual();
+            vEmail();
+            vPass();
+            vconfirmPass();
             
             Crear.onclick = function(){
                 Form0.style.left = "-450px";
@@ -138,6 +149,7 @@
                 
             }
             Sig1.onclick = function(){
+                validate();
                 Form1.style.left = "-450px";
                 Form2.style.left = "40px";
                 progress.style.width = "240px";
@@ -148,6 +160,7 @@
                 progress.style.width = "120px";
             }
             Sig2.onclick = function(){
+                validate();
                 Form2.style.left = "-450px";
                 Form3.style.left = "40px";
                 progress.style.width = "360px";
@@ -162,6 +175,7 @@
                 Form4.style.left = "-450px";
                 body.classList.remove('active');
             }
+            
             
         </script>   
     </body>
