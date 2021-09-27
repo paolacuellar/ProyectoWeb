@@ -76,8 +76,15 @@ form button{
     color: #fff;
     cursor: pointer;
 }
-#Form1{
+#FormContainer{
     left: 450px;   
+}
+.tab {
+    left: 450px;
+    display: none;
+  }
+#Form1{
+    left: 450px;
 }
 
 #Form2{
