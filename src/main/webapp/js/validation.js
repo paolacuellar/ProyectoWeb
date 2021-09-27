@@ -65,6 +65,7 @@ function vconfirmPass(){
     if(pass.value!=confirmpass.value){
         txPass.innerHTML="Contraseña debe ser igual";
         txPass.style.color="#ff0000";
+        console.log(confirmpass.value);
         
     }else{
         txPass.innerHTML="";
