@@ -22,8 +22,8 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(String userName, String password) {
-        this.userName = userName;
+    public UserModel(String nickname, String password) {
+        this.nickname = nickname;
         this.password = password;
     }
     
