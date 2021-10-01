@@ -20,3 +20,6 @@ UNIQUE INDEX `nickUser_UNIQUE`(`nickUser` ASC) VISIBLE
 
 
 SELECT * FROM user;
+
+CALL LogInUser("admin1", "Admin!123");
+
