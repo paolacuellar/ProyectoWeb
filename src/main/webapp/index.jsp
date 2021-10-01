@@ -88,7 +88,7 @@
               </div>
            </form>  
             
-           <form id="Form4" action="./LoginInController" method="POST">
+           <form id="Form4" action="./LogInController" method="POST">
             <h3>INICIAR SESION</h3>
             <input type="text" name="nickname" placeholder="Usuario" required>
             <input type="password" name="pass" placeholder="Password" required>
