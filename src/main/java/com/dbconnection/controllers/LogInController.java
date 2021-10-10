@@ -7,9 +7,7 @@ package com.dbconnection.controllers;
 
 import com.dbconnection.dao.UserDAO;
 import com.dbconnection.models.UserModel;
-import com.dbconnection.utils.FileUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,10 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-/**
- *
- * @author PaolaAlejandra
- */
+
 @WebServlet(name = "LogInController", urlPatterns = {"/LogInController"})
 public class LogInController extends HttpServlet {
 
@@ -48,7 +43,7 @@ public class LogInController extends HttpServlet {
                             session.setAttribute("UserName", result.getUserName());
                             session.setAttribute("Userdob", result.getUserdob());
                             session.setAttribute("UserImage", result.getUrlImage());
-                            request.getRequestDispatcher("loggedPrueba.jsp").forward(request,response);
+                            request.getRequestDispatcher("dashboard.jsp").forward(request,response);
                         }else {
                             response.sendRedirect("fail.jsp");
                         }
