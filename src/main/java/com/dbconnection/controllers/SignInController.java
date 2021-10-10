@@ -19,10 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
-/**
- *
- * @author ae_sq
- */
+
 @WebServlet(name = "SignInController", urlPatterns = {"/SignInController"})
 @MultipartConfig(maxFileSize = 1000 * 1000 * 5, maxRequestSize = 1000 * 1000 * 25, fileSizeThreshold = 1000 * 1000)
 public class SignInController extends HttpServlet {
@@ -37,26 +34,26 @@ public class SignInController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String name = request.getParameter("name");
-        String fecha = request.getParameter("dob");// Obtenemos el nombre debe coincidir con el name del input
+        String fecha = request.getParameter("dob");
         String email = request.getParameter("email");
-        String password = request.getParameter("pass");  // Obtenemos el contraseña debe coincidir con el name del input
+        String password = request.getParameter("pass"); 
         String nickname = request.getParameter("nickname");
         
         String path = request.getServletContext().getRealPath("");
         
-        File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE); // Obtenemos la Direccion donde deseamos guardarlo
-        // Sino existe el directorio la creamos
+        File fileSaveDir = new File(path + FileUtils.RUTE_USER_IMAGE); 
+        
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdir();
         }
 
         
-        Part file = request.getPart("image"); // Obtenemos la imagen, debe coincidir con el name del input
+        Part file = request.getPart("image"); 
         String contentType = file.getContentType();
         System.out.println("Imagen: " + file.getName());
         
         
-        String nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType); // Remplazamos el nombre que tiene para que no existan duplicados
+        String nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType); 
         String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
         
         file.write(fullPath); // Copiamos la imagen en la ruta especificada
