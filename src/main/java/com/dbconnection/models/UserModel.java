@@ -5,10 +5,7 @@
  */
 package com.dbconnection.models;
 
-/**
- *
- * @author magoc
- */
+
 public class UserModel {
 
     private int id;
