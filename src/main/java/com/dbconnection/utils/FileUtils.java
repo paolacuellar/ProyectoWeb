@@ -5,10 +5,7 @@
  */
 package com.dbconnection.utils;
 
-/**
- *
- * @author magoc
- */
+
 public class FileUtils {
     public static String RUTE_USER_IMAGE = "assets/images";
     
