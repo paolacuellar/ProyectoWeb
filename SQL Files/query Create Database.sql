@@ -3,7 +3,9 @@ USE dbproyecto;
 
 DELETE FROM user;
 DROP TABLE user;
-DROP DATABASE DBProyecto;
+DELETE FROM note;
+DROP TABLE note;
+
 
 CREATE TABLE `user` ( 
 `idUser` INT NOT NULL AUTO_INCREMENT, 
@@ -17,9 +19,22 @@ PRIMARY KEY (`idUser`),
 UNIQUE INDEX `idUser_UNIQUE`(`idUser` ASC) VISIBLE,
 UNIQUE INDEX `nickUser_UNIQUE`(`nickUser` ASC) VISIBLE
 );
+ALTER TABLE `user` 
+ADD COLUMN `dateUser` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `imageUser`;
 
 
-SELECT * FROM user;
+CREATE TABLE `note` (
+  `idNote` INT NOT NULL AUTO_INCREMENT,
+  `descriptionN` VARCHAR(255) NOT NULL,
+  `dateN` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `statusN` BINARY NOT NULL DEFAULT 1,
+  `idUser` INT NOT NULL,
+  PRIMARY KEY (`idNote`),
+  UNIQUE INDEX `idNote_UNIQUE` (`idNote` ASC) VISIBLE,
+  INDEX `idUser_idx` (`idUser` ASC) VISIBLE,
+  CONSTRAINT `idUser`
+	FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
+   );
 
-CALL LogInUser("admin1", "Admin!123");
+
 

@@ -1,8 +1,3 @@
-USE `dbproyecto`;
-DROP procedure IF EXISTS `InsertUser`;
-
-DELIMITER $$
-USE `dbproyecto`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertUser`(
 IN `pnameUser` VARCHAR(60), 
 IN `pdobUser` DATE,
@@ -27,6 +22,4 @@ ppassUser,
 pnickUser,
 pimageUser);
 
-END$$
-
-DELIMITER ;
+END
