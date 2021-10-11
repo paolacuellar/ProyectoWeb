@@ -1,11 +1,7 @@
-<%-- 
-    Document   : index
-    Created on : 20 sep. 2021, 1:08:08
-    Author     : ae_sq
---%>
+
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <!DOCTYPE html>
 <html>
     <head>
