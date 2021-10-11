@@ -1,0 +1,295 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    
+    background-image: url(banner4.jpg);
+    background-size: auto;
+    transition: 0.5s;
+}
+img{
+    position:absolute;
+    border-radius: 50%;
+    top:10px;
+    left: 47.1%;
+}
+
+
+.modal{
+    width:100%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(34,34,68,.8);
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#btn-modal:checked ~ .modal{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.contenedor{
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 1px 7px, 25px rgba(0, 0, 0, .6);
+    transition: all 500ms ease;
+    position: relative;
+    transform: translateY(-30%);
+}
+
+#btn-modal:checked ~ .modal .contenedor{
+    transform: translateY(0%);
+}
+
+.contenedor header{
+    padding: 10px;
+    background: linear-gradient(to right, #ccccff, #524a9d);
+    color: #fff;
+}
+
+.contenedor label{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#btn-modal{
+    display: none;
+}
+.lbl-modal{
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+	height: 150px;
+    text-align: center;
+	position: relative;
+	float: left;
+	margin-left: 150px;
+	margin-top: 150px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.lbl-modal i{
+    font-size: 50px;
+    margin-top: 35%;
+    color: #524a9d;
+  
+}
+
+.contenido{
+    padding: 15px;
+}
+
+textarea.md-textarea {
+    resize: none;
+    width: 100%;
+    height: 200px;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+button {
+    width: 100px;
+    height: 25px;
+    text-align: center;
+    float:right;
+    background: #524a9d;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all .5s;
+    box-shadow: inset 0 0 0 rgba(0,0,0,1);
+
+}
+
+button:hover{
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+
+.add-note{
+    width: 150px;
+	height: 150px;
+	/*background-color: white;*/
+	position: relative;
+	float: left;
+	margin-left: 150px;
+	margin-top: 150px;
+}
+
+.add-note button{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.note-list {
+	width: 100%;
+	height: 100%;
+}
+.note {
+	width: 150px;
+	height: 150px;
+	background-color: white;
+	position: relative;
+	float: left;
+    text-align: center;
+    border-radius: 4px;
+	margin-left: 10px;
+	margin-top: 150px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.note textarea{
+    margin-top:10px;
+    resize: none;
+    border: 0;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    height: 100px;
+    padding: 10px 5px;
+    margin: 5px 0;
+}
+
+.note button{
+    width: 35px;
+    height: 35px;
+   
+    background:#524a9d;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.jmgmodal {
+    width:100%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(34,34,68,.8);
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.jmgmodal.visible {
+        visibility: visible; opacity: 1;
+        transform: translateY(0%);
+}
+.jmgmodal * {box-sizing: inherit}
+
+.jmgmodal .panel {
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 1px 7px, 25px rgba(0, 0, 0, .6);
+    transition: all 500ms ease;
+    position: relative;
+    transform: translateY(-30%);
+}
+.jmgmodal.visible .panel {
+    transform: none;
+}
+
+.jmgmodal .title {
+
+    background: linear-gradient(to right, #ccccff, #524a9d);
+    padding: 10px;
+    background: linear-gradient(to right, #ccccff, #524a9d);
+    color: #fff;
+}
+
+.jmgmodal .panel .close {
+    position: absolute; top: .25em; right: .75em;
+    cursor: pointer; font-size: 25px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #fff;
+}
+
+.jmgmodal .panel .content {
+    resize: none;
+    width: 100%;
+    height: 200px;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.jmgmodal .panel .footer {
+    position: absolute; bottom: 0;
+    width: 100%; background: transparent;
+    font-weight: bolder; padding: 0 .5em;
+    border-radius: 0 0 10px 10px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: right;
+}
+
+.jmgmodal .panel .footer .action {
+    border-radius: 10px; color: #fff;
+    background: #524a9d; border: 0;
+    width: 100px;
+    height: 25px;
+    font-weight: bold; cursor: pointer;
+    margin-left: 20px;
+    transition: all .12s;
+    margin: 1rem .5rem;
+}
+
+.jmgmodal .panel .footer .action:hover {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+
+.jmgmodal .panel .content .action {
+    resize: none;
+    width: 100%;
+    height: 200px;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
