@@ -5,9 +5,10 @@ BEGIN
 SELECT 
 	`idNote`,
     `descriptionN`,
-    `dateN`
+    `dateN`,
+    `idHashtag`
 FROM `note`
 WHERE `statusN` = 1
-AND `idUser` = pidUser;
-
+AND `idUser` = pidUser
+ORDER BY `idNote`DESC;
 END

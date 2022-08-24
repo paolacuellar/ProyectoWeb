@@ -28,18 +28,14 @@ public class DeleteNoteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String idNoteS = request.getParameter("idNote");
-        int idNote=Integer.parseInt(idNoteS);
-        NoteModel note = new NoteModel(idNote);
+        /*String idNoteS = request.getParameter("idNote");*/
+        int idNoteS=Integer.parseInt(request.getParameter("idNota"));
+        NoteModel note = new NoteModel(idNoteS);
         
             try {
 		NoteModel result=NoteDAO.deleteNote(note);
-                        if (result!=null){
+                response.sendRedirect("./LogInController"); 
 
-                            request.getRequestDispatcher("dashboard.jsp").forward(request,response);
-                        }else {
-                            response.sendRedirect("fail.jsp");
-                        }
 		} catch (Exception e) {
                         //response.sendRedirect("fail.jsp"); 
 			e.printStackTrace();

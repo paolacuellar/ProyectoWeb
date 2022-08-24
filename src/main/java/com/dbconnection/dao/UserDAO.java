@@ -45,6 +45,48 @@ public class UserDAO {
         return rowsAffectted;
     }
     
+        public static UserModel updateUser(UserModel user) throws Exception {
+    	Connection con = null;
+    	CallableStatement statement = null;
+
+        //int rowsAffectted = 0;
+        try {
+            con = DbConnection.getConnection();
+            
+            statement = con.prepareCall("call UpdateUser(?,?,?,?,?,?,?)");
+            
+            statement.setInt(1, user.getIdUser().getId());
+            statement.setString(2, user.getUserName());
+            statement.setString(3, user.getUserdob());
+            statement.setString(4, user.getUserEmail());
+            statement.setString(5, user.getPassword());
+            statement.setString(6, user.getNickname());
+            statement.setString(7, user.getUrlImage());
+            
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                
+                //int id=resultSet.getInt("ID");
+                String userName = resultSet.getString("nameUser");
+                String userdob = resultSet.getString("dobUser");
+                String userEmail = resultSet.getString("emailUser");
+                String password = resultSet.getString("passUser");
+                String nickname = resultSet.getString("nickUser");
+                String urlImage = resultSet.getString("imageUser");
+                
+                return new UserModel(userName,userdob,userEmail,nickname,password,urlImage);
+            }
+            //rowsAffectted = statement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            //rowsAffectted = 0;
+        } finally {
+        	statement.close();
+            con.close();
+        }
+        return null;
+    }
+    
     public static UserModel logInUser(UserModel user) throws Exception {
     	//Connection con = null;
     	//CallableStatement statement = null;
@@ -69,7 +111,7 @@ public class UserDAO {
                 String nickname = resultSet.getString("Usuario");
                 String urlImage = resultSet.getString("Foto");
                 
-                return new UserModel(id,userName,userdob,userEmail,password,nickname,urlImage);
+                return new UserModel(id,userName,userdob,userEmail,nickname,password,urlImage);
             }
             
             //rowsAffectted = true;

@@ -6,7 +6,9 @@
 package com.dbconnection.controllers;
 
 import com.dbconnection.dao.NoteDAO;
+import com.dbconnection.models.HashtagModel;
 import com.dbconnection.models.NoteModel;
+import com.dbconnection.models.UserModel;
 import java.io.IOException;
 import java.util.List;
 import jakarta.servlet.ServletException;
@@ -14,6 +16,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 
 
@@ -23,43 +26,28 @@ public class CreateNoteController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Obtenemos las notas del DAO
-        List<NoteModel> notes = null;
-        String idUserS = request.getParameter("idUser");
-        int idUser=Integer.parseInt(idUserS);
-        NoteModel note = new NoteModel(idUser);
-		try {
-			notes = NoteDAO.getNotes(note);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        // Lo agregamos como atributo al request
-        request.setAttribute("notes", notes);
-        // Enviamos el request a dashboard.jsp con la informacion
-        request.getRequestDispatcher("dashboard.jsp").forward(request, response);
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String description = request.getParameter("description");
-        String idUserS = request.getParameter("idUser");
+        HttpSession session = request.getSession(false);
+        String description = request.getParameter("description1");
+        String stringHashtag=request.getParameter("hashtag");
+        int hashtag=Integer.parseInt(stringHashtag,10);
+        Integer idUserS = (Integer)session.getAttribute("ID User");
+        //int idUser=Integer.parseInt(session.getAttribute("ID User").toString());
 
-        NoteModel note = new NoteModel(description, idUserS);
+        NoteModel note = new NoteModel(description, new UserModel(idUserS), new HashtagModel(hashtag));
         try {
 			NoteDAO.insertNote(note);
-                        response.sendRedirect("dashboard.jsp"); 
+                        response.sendRedirect("./LogInController"); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

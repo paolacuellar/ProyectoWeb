@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your notes</title> 
+        <link rel="shortcut icon" href="favicon.png">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    </head>
+    <body>
+        <div class="container">
+            <div class="profile-content">
+                <img src="https://github.com/mdo.png" alt="" width="96" height="96" class="rounded-circle me-2">
+                  <!--<img src="image/profile.jpg" alt="profileImg">-->
+            </div>
+           <form id="FormContainer" action="./SignInController" method="POST" enctype="multipart/form-data">
+                <div class="tab">
+                    <h3> EDITAR DATOS DE LA CUENTA</h3>
+                    <input type="text" name="name" placeholder="Nombre completo" pattern="[A-Za-z]+">
+                    <input type="date" name="dob" class="Fecha" placeholder="Fecha de nacimiento">
+                    <input type="text" name="email" id= "email" placeholder="Correo">
+                    <input type="password" name="pass" id= "pass" placeholder="Password">
+                    <input type="file" name="image" placeholder="Imagen de perfil">
+                    <input type="text" name="nickname" placeholder="Nombre de Usuario">
+                </div>
+                <div class="btn-box">
+                    <button type="Submit" > GUARDAR CAMBIOS </button>
+                </div>
+            </form>  
+           
+        </div>
+    </body>
+</html>

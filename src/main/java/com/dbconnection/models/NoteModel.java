@@ -12,24 +12,43 @@ public class NoteModel {
     private String descriptionN;
     private String dateN;
     private int statusN;
-    private int idUser;
+    private UserModel idUser;
+    private HashtagModel idHashtag;
     
     public NoteModel(){
     }
     
-     public NoteModel(int id, String description, String date){
+     public NoteModel(int id, String description, String date, HashtagModel Hashtag){
         this.idNote=id;
         this.descriptionN = description;
         this.dateN = date;
+        this.idHashtag = Hashtag;
     }
     
-    public NoteModel(String description, String date){
+    public NoteModel(String description, UserModel User, HashtagModel Hashtag){
+        this.descriptionN = description;
+        this.idUser = User;
+        this.idHashtag = Hashtag;
+    }
+    
+    public NoteModel(String description, String date, HashtagModel Hashtag){
         this.descriptionN = description;
         this.dateN = date;
+        this.idHashtag = Hashtag;
     }
     
-    public NoteModel(int status){
-        this.statusN = status;
+    public NoteModel(UserModel User){
+        this.idUser = User;
+    }
+    
+    public NoteModel(int id){
+        this.idNote=id;
+    }
+
+    public NoteModel(int id, String description, HashtagModel Hashtag) {
+        this.idNote=id;
+        this.descriptionN = description;
+        this.idHashtag = Hashtag;
     }
     
     public int getId() {
@@ -56,8 +75,17 @@ public class NoteModel {
         this.dateN = date;
     }
     
-    public int getIdUser() {
+    public UserModel getIdUser() {
         return idUser;
     }
+
+    public HashtagModel getIdHashtag() {
+        return idHashtag;
+    }
+
+    public void setIdHashtag(HashtagModel idHashtag) {
+        this.idHashtag = idHashtag;
+    }
+    
     
 }

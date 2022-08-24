@@ -60,7 +60,7 @@ public class SignInController extends HttpServlet {
         UserModel user = new UserModel(name, fecha, email, nickname, password, FileUtils.RUTE_USER_IMAGE + "/" + nameImage);
         try {
 			UserDAO.insertUser(user);
-                        response.sendRedirect("index.jsp"); // Retornamos al index
+                        response.sendRedirect("http://localhost:8080/"); // Retornamos al index
 		} catch (Exception e) {
                         //response.sendRedirect("fail.jsp"); 
 			e.printStackTrace();

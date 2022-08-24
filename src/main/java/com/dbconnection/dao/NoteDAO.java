@@ -5,6 +5,7 @@
  */
 package com.dbconnection.dao;
 
+import com.dbconnection.models.HashtagModel;
 import com.dbconnection.models.NoteModel;
 import com.dbconnection.utils.DbConnection;
 import java.sql.CallableStatement;
@@ -24,7 +25,7 @@ public class NoteDAO {
         try {
             con = DbConnection.getConnection();
             statement = con.prepareCall("CALL ActiveNote(?)");
-            statement.setInt(1, note.getIdUser());
+            statement.setInt(1, note.getIdUser().getId());
             ResultSet resultSet = statement.executeQuery();
             // Si el resultSet tiene resultados lo recorremos
             while (resultSet.next()) {
@@ -33,8 +34,10 @@ public class NoteDAO {
                 int id = resultSet.getInt("idNote");
                 String description = resultSet.getString("descriptionN");
                 String date = resultSet.getString("dateN");
-                // Agregamos el usuario a la lista
-                notes.add(new NoteModel(id, description, date));
+                int hashtag = resultSet.getInt("idHashtag");
+                HashtagModel idhashtag=HashtagDAO.getHashtag(hashtag);
+                // Agregamos la nota a la lista
+                notes.add(new NoteModel(id, description, date, idhashtag));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -46,6 +49,37 @@ public class NoteDAO {
         return notes;
     }
     
+    public static NoteModel getNote(int idNote) throws Exception  {
+        
+        Connection con = null;
+        CallableStatement statement = null;
+
+        try {
+            con = DbConnection.getConnection();
+            statement = con.prepareCall("CALL GetNote(?)");
+            statement.setInt(1, idNote);
+            ResultSet resultSet = statement.executeQuery();
+            // Si el resultSet tiene resultados lo recorremos
+            while (resultSet.next()) {
+                // Obtenemos el valor del result set en base al nombre de la
+                // columna
+                String description = resultSet.getString("descriptionN");
+                String date = resultSet.getString("dateN");
+                int hashtag = resultSet.getInt("idHashtag");
+                HashtagModel idhashtag=HashtagDAO.getHashtag(hashtag);
+                // Agregamos el usuario a la lista
+                return new NoteModel(description, date, idhashtag);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            statement.close();
+            con.close();
+        }
+
+        return null;
+    }
+    
     
     public static int insertNote(NoteModel note) throws Exception {
     	Connection con = null;
@@ -55,10 +89,11 @@ public class NoteDAO {
         try {
             con = DbConnection.getConnection();
             
-            statement = con.prepareCall("CALL InsertNote(?, ?)");
+            statement = con.prepareCall("CALL InsertNote(?, ?, ?)");
             
             statement.setString(1, note.getDescription());
-            statement.setInt(2, note.getIdUser());
+            statement.setInt(2, note.getIdUser().getId());
+            statement.setInt(3, note.getIdHashtag().getId());
             
             rowsAffectted = statement.executeUpdate();
         } catch (SQLException ex) {
@@ -79,18 +114,21 @@ public class NoteDAO {
         try {
             con = DbConnection.getConnection();
             
-            statement = con.prepareCall("CALL UpdateNote(?, ?)");
+            statement = con.prepareCall("CALL UpdateNote(?, ?, ?)");
             
             statement.setInt(1, note.getId());
             statement.setString(2, note.getDescription());
+            statement.setInt(3, note.getIdHashtag().getId());
             
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 
                 String description = resultSet.getString("descriptionN");
                 String date = resultSet.getString("dateN");
+                int hashtag = resultSet.getInt("idHashtag");
+                HashtagModel idhashtag=HashtagDAO.getHashtag(hashtag);
                 
-                return new NoteModel(description, date);
+                return new NoteModel(description, date, idhashtag);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

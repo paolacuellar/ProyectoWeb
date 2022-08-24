@@ -15,16 +15,30 @@ public class UserModel {
     private String nickname;
     private String password;
     private String urlImage;
+    private UserModel idUser;
 
     public UserModel() {
     }
-
+    
+    public UserModel(int id){
+        this.id=id;
+    }
     public UserModel(String nickname, String password) {
         this.nickname = nickname;
         this.password = password;
     }
     
-     public UserModel(int id, String userName, String userdob, String userEmail,String nickname, String password, String urlImage) {
+     public UserModel(UserModel idUser, String userName, String userdob, String userEmail,String nickname, String password, String urlImage) {
+        this.idUser=idUser;
+        this.userName = userName;
+        this.userdob = userdob;
+        this.userEmail = userEmail;
+        this.nickname = nickname;
+        this.password = password;
+        this.urlImage = urlImage;
+    }
+     
+    public UserModel(int id, String userName, String userdob, String userEmail,String nickname, String password, String urlImage) {
         this.id=id;
         this.userName = userName;
         this.userdob = userdob;
@@ -98,5 +112,8 @@ public class UserModel {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    
+    public UserModel getIdUser() {
+        return idUser;
+    }
 }

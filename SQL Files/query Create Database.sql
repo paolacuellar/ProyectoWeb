@@ -35,6 +35,21 @@ CREATE TABLE `note` (
   CONSTRAINT `idUser`
 	FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
    );
-
+   ALTER TABLE `note` 
+ADD COLUMN `idHashtag` INT NULL AFTER `idUser`,
+ADD INDEX `idHashtag_idx` (`idHashtag` ASC) VISIBLE;
+;
+ALTER TABLE `note` 
+ADD CONSTRAINT `idHashtag`
+  FOREIGN KEY (`idHashtag`)
+  REFERENCES `dbproyecto`.`hashtag` (`idHashtag`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+   
+   CREATE TABLE `hashtag` (
+  `idHashtag` INT NOT NULL AUTO_INCREMENT,
+  `nameH` VARCHAR(45) NOT NULL,
+  `orderH` INT NULL,
+  PRIMARY KEY (`idHashtag`));
 
 
